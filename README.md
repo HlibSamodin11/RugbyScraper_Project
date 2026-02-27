@@ -1,13 +1,13 @@
-<div style="display: flex; justify-content: space-between; align-items: center; margin: auto;">
+<div align="center">
 
   <!-- Left image -->
-  <img src="https://github.com/user-attachments/assets/f7dcb8ac-22e5-48c2-8463-e2782070e81c" alt="Left" width="240" height="240">
+  <img align="left" width="280" height="220" alt="image" src="https://github.com/user-attachments/assets/09d3cb8e-770a-4146-9e3b-497d69fd67f8" />
 
   <!-- Center image -->
   <img src="https://github.com/user-attachments/assets/4cf1bc0f-f4fb-4264-a8f1-59e4292b85bf" alt="Center" width="240" height="240">
 
   <!-- Right image -->
-  <img src="https://github.com/user-attachments/assets/74b37d89-f0ab-4da1-95fa-938ced99e41c" alt="Right" width="240" height="240">
+  <img align="right" src="https://github.com/user-attachments/assets/74b37d89-f0ab-4da1-95fa-938ced99e41c" alt="Right" width="240" height="240">
 
 </div>
 <div align="center">
