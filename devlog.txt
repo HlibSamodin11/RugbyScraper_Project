@@ -4,6 +4,7 @@ Hello this is my devlog in this project
 
 [27 Feb 2025 19:56]
 I started the project today Yay!!!!
-I set up all the files and folders to start coding 
-Also I set up the read.md
+I set up all the files and folders to start coding tbh it seems hard but my planning is good
+Also I set up the read.md i think personally it look really nice
+Also entry point , basic code today ill just plan the project cuz im to lazy T_T
 ps: Ngl im kinda excited to get this going :) 
