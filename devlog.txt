@@ -9,7 +9,12 @@ Also I set up the read.md i think personally it look really nice
 Also entry point , basic code today ill just plan the project cuz im to lazy T_T
 ps: Ngl im kinda excited to get this going :) 
 
+----------------------------------------
 
 [1 Mar 2025 22:22]
-Created teams and competitions table
+Created teams and competitions table and standing table and matches table
+Starting to look like a real database
 I took like 3hrs cuz i couldnt connect the database but all worst is for best
+Another 30 mins gone for other 2 tables  but they were similar so it was easy :(
+
+----------------------------------------

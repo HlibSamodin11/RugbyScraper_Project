@@ -34,7 +34,7 @@ def create_teams_table():
     print("Teams table created successfully")
 
 
-# competitions table  (different rugby competitions)
+# competitions table (different rugby competitions)
 def create_competitions_table():
     connection = create_connection()
     cursor = connection.cursor()
@@ -53,5 +53,58 @@ def create_competitions_table():
     print("Competitions table created successfully")
 
 
+# standings table (league standings for each competition)
+def create_standings_table():
+    connection = create_connection()
+    cursor = connection.cursor()
+
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS standings (
+            standing_id INTEGER PRIMARY KEY AUTOINCREMENT,
+            team_id INTEGER NOT NULL,
+            competition_id INTEGER NOT NULL,
+            position INTEGER,
+            played INTEGER,
+            won INTEGER,
+            drawn INTEGER,
+            lost INTEGER,
+            points INTEGER,
+            scraped_date TEXT,
+            FOREIGN KEY (team_id) REFERENCES teams (team_id),
+            FOREIGN KEY (competition_id) REFERENCES competitions (competition_id)
+        )
+    """)
+
+    connection.commit()
+    connection.close()
+    print("Standings table created successfully")
+
+
+# matches table (stores all match results)
+def create_matches_table():
+    connection = create_connection()
+    cursor = connection.cursor()
+
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS matches (
+            match_id INTEGER PRIMARY KEY AUTOINCREMENT,
+            competition_id INTEGER NOT NULL,
+            home_team TEXT NOT NULL,
+            away_team TEXT NOT NULL,
+            home_score INTEGER,
+            away_score INTEGER,
+            match_date TEXT,
+            FOREIGN KEY (competition_id) REFERENCES competitions (competition_id)
+        )
+    """)
+
+    connection.commit()
+    connection.close()
+    print("Matches table created successfully")
+
+
+# run to make sure it works
 create_teams_table()
 create_competitions_table()
+create_standings_table()
+create_matches_table()
