@@ -1,5 +1,14 @@
 import requests
 from bs4 import BeautifulSoup
+from database import (
+    insert_team,
+    insert_standing,
+    insert_competition,
+    log_scrape,
+    create_connection,
+    initialise_database,
+)
+from datetime import date
 
 request_headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",  # cspell:ignore KHTML
@@ -92,3 +101,48 @@ def parse_standings(html):
 
     print(f"parsed {len(standings)} teams")
     return standings
+
+
+def scrape_and_save(competition_id, url):
+    initialise_database()
+    insert_competition("Six Nations", "international", "2026")
+    html = fetch_espn_page(url)
+    standings = parse_standings(html)
+
+    if not standings:
+        log_scrape(0, "failed")
+        return
+
+    for row in standings:
+        insert_team(row["team_name"], None, None, None)
+
+        conn = create_connection()
+        cursor = conn.cursor()
+        cursor.execute(
+            "SELECT team_id FROM teams WHERE team_name = ?", (row["team_name"],)
+        )
+        result = cursor.fetchone()
+        conn.close()
+
+        if not result:
+            print(f"couldn't find team_id for {row['team_name']}, skipping")
+            continue
+
+        insert_standing(
+            result[0],
+            competition_id,
+            row["position"],
+            row["played"],
+            row["won"],
+            row["drawn"],
+            row["lost"],
+            row["points"],
+            date.today().isoformat(),
+        )
+
+    log_scrape(len(standings), "success")
+    print(f"saved {len(standings)} standings to database")
+
+
+if __name__ == "__main__":
+    scrape_and_save(1, "https://www.espn.com/rugby/standings/_/league/180659")

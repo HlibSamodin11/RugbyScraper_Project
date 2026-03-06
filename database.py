@@ -27,7 +27,7 @@ def create_teams_table():
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS teams (
                 team_id INTEGER PRIMARY KEY AUTOINCREMENT,
-                team_name TEXT NOT NULL,
+                team_name TEXT NOT NULL UNIQUE,
                 short_name TEXT,
                 country TEXT,
                 league TEXT
@@ -275,4 +275,5 @@ def initialise_database():
     print("database ready!")
 
 
-initialise_database()
+if __name__ == "__main__":
+    initialise_database()

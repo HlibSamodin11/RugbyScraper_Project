@@ -26,6 +26,7 @@ Updated Create Matches Table today
 Add helper functions for inserting data
 Im Actually so BORED of those databases cuz i do like couple of them a day
 Also today i had my physics assigment and it was kinda easy even tho i was worrying about it a lot ill also have it on wednesday
+
 ----------------------------------------
 
 [5 Mar 2025 16:38]
@@ -42,4 +43,7 @@ Six Nations with 15 points, Wales bottom with 1 even tho its real data it was ha
 [6 Mar 2025 09:01]
 Soooo im home today due to my leg so im going to add more stuff than i usually do
 Ok so rn i finished the scrapper.py where i added one of the most important parts function called parse_standings() it is made to get team data from ESPN HTML page bro but it took me like 4 hours somehow cuz i was refactoring code but omg it takes so long 
+omggg i finally got database working , it was so harld like fr like i hadto add UNIQUE to team name , and also fix competitions insert 
+also sort out import list 
+six nations standings are now properly saved to db!
 
