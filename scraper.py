@@ -10,7 +10,6 @@ from database import (
 )
 from datetime import date
 
-# ESPN blocks requests without a real browser user agent
 request_headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",  # cspell:ignore KHTML
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
@@ -19,7 +18,6 @@ request_headers = {
 
 
 def fetch_espn_page(url):
-    # returns html string or None if something goes wrong
     try:
         response = requests.get(url, headers=request_headers, timeout=10)
         response.raise_for_status()
@@ -39,7 +37,6 @@ def fetch_espn_page(url):
 
 
 def _find_stats_table(soup):
-    # ESPN splits standings into two tables - need the one without fixed-left
     tables = soup.find_all("table")
     for table in tables:
         classes = table.get("class") or []
@@ -80,7 +77,6 @@ def parse_standings(html):
         name_tag = team_row.find("span", class_="hide-mobile")
         team_name = name_tag.text.strip() if name_tag else "unknown"
 
-        # stat order: GP W D L BYE F A TF TA TBP LBP BP PD P
         stat_cells = stat_row.find_all("span", class_="stat-cell")
         if len(stat_cells) < 14:
             continue
@@ -101,7 +97,6 @@ def parse_standings(html):
 
 
 def scrape_and_save(competition_id, url, competition_name, competition_type, season):
-    # fetches + parses standings, saves everything to database
     initialise_database()
     insert_competition(competition_name, competition_type, season)
     html = fetch_espn_page(url)
@@ -114,7 +109,6 @@ def scrape_and_save(competition_id, url, competition_name, competition_type, sea
     for row in standings:
         insert_team(row["team_name"], None, None, None)
 
-        # look up team_id after inserting
         conn = create_connection()
         cursor = conn.cursor()
         cursor.execute(
@@ -139,3 +133,67 @@ def scrape_and_save(competition_id, url, competition_name, competition_type, sea
         )
 
     log_scrape(len(standings), "success")
+
+
+def parse_results(html):
+    if not html:
+        return []
+
+    soup = BeautifulSoup(html, "html.parser")
+    results = []
+
+    matches = soup.find_all("section", class_="Scoreboard")
+
+    for match in matches:
+        try:
+            teams = match.find_all("li", class_="ScoreboardScoreCell__Item")
+            if len(teams) < 2:
+                continue
+
+            home_li = None
+            away_li = None
+            for t in teams:
+                classes = t.get("class") or []
+                if "ScoreboardScoreCell__Item--home" in classes:
+                    home_li = t
+                elif "ScoreboardScoreCell__Item--away" in classes:
+                    away_li = t
+
+            if home_li is None or away_li is None:
+                continue
+
+            home_name = home_li.find("div", class_="ScoreCell__TeamName")
+            away_name = away_li.find("div", class_="ScoreCell__TeamName")
+            home_score = home_li.find("div", class_="ScoreCell__Score")
+            away_score = away_li.find("div", class_="ScoreCell__Score")
+
+            if home_name is None or away_name is None:
+                continue
+            if home_score is None or away_score is None:
+                continue
+
+            results.append(
+                {
+                    "home": home_name.text.strip(),
+                    "away": away_name.text.strip(),
+                    "home_score": home_score.text.strip(),
+                    "away_score": away_score.text.strip(),
+                }
+            )
+        except Exception:
+            continue
+
+    return results
+
+
+if __name__ == "__main__":
+    html = fetch_espn_page("https://www.espn.com/rugby/scoreboard/_/league/180659")
+    if html:
+        with open("test_results.html", "w") as f:
+            f.write(html)
+        results = parse_results(html)
+        print(f"found {len(results)} matches")
+        for r in results:
+            print(f"  {r['home']} {r['home_score']} - {r['away_score']} {r['away']}")
+    else:
+        print("failed to fetch")

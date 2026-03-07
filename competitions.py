@@ -1,45 +1,51 @@
-# url is None for competitions that did not start yet
 COMPETITIONS = {
     "1": {
         "name": "Six Nations",
-        "season": "2026",
         "type": "international",
+        "season": 2026,
         "url": "https://www.espn.com/rugby/standings/_/league/180659",
+        "results_url": "https://www.espn.com/rugby/scoreboard/_/league/180659",
     },
     "2": {
-        "name": "Premiership",
-        "season": "2025-26",
+        "name": "Gallagher Premiership",
         "type": "club",
+        "season": "2025-26",
         "url": "https://www.espn.com/rugby/standings/_/league/267979",
+        "results_url": "https://www.espn.com/rugby/scoreboard/_/league/267979",
     },
     "3": {
         "name": "Top 14",
-        "season": "2025-26",
         "type": "club",
+        "season": "2025-26",
         "url": "https://www.espn.com/rugby/standings/_/league/270559",
+        "results_url": "https://www.espn.com/rugby/scoreboard/_/league/270559",
     },
     "4": {
-        "name": "United Rugby Championship",
-        "season": "2025-26",
+        "name": "URC",
         "type": "club",
+        "season": "2025-26",
         "url": "https://www.espn.com/rugby/standings/_/league/270557",
+        "results_url": "https://www.espn.com/rugby/scoreboard/_/league/270557",
     },
     "5": {
         "name": "Champions Cup",
-        "season": "2025-26",
         "type": "european",
-        "url": None,  # coming soon
+        "season": "2025-26",
+        "url": None,
+        "results_url": "https://www.espn.com/rugby/scoreboard/_/league/271937",
     },
     "6": {
         "name": "Rugby Championship",
-        "season": "2026",
         "type": "international",
-        "url": None,  # coming soon
+        "season": 2026,
+        "url": None,
+        "results_url": "https://www.espn.com/rugby/scoreboard/_/league/244293",
     },
     "7": {
         "name": "Rugby World Cup 2027",
-        "season": "2027",
         "type": "international",
-        "url": None,  # not started yet
+        "season": 2027,
+        "url": None,
+        "results_url": None,
     },
 }
