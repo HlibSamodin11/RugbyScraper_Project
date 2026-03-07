@@ -10,7 +10,7 @@ from database import (
 )
 from datetime import date
 
-# ESPN always bloks the request without the real browser user , so i made it look like normal human browsing
+# ESPN blocks requests without a real browser user agent
 request_headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",  # cspell:ignore KHTML
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
@@ -23,7 +23,6 @@ def fetch_espn_page(url):
     try:
         response = requests.get(url, headers=request_headers, timeout=10)
         response.raise_for_status()
-        print("page fetched successfully")
         return response.text
     except requests.exceptions.HTTPError as e:
         print(f"http error fetching {url}: {e}")
@@ -40,7 +39,7 @@ def fetch_espn_page(url):
 
 
 def _find_stats_table(soup):
-    # ESPN splits standings into two tables i need the one without fixed-left
+    # ESPN splits standings into two tables - need the one without fixed-left
     tables = soup.find_all("table")
     for table in tables:
         classes = table.get("class") or []
@@ -51,7 +50,6 @@ def _find_stats_table(soup):
 
 def parse_standings(html):
     if not html:
-        print("no html to parse")
         return []
 
     soup = BeautifulSoup(html, "html.parser")
@@ -59,7 +57,6 @@ def parse_standings(html):
 
     left_table = soup.find("table", class_="Table--fixed-left")
     if not left_table:
-        print("couldn't find the team table - maybe ESPN changed their layout")
         return []
 
     left_tbody = left_table.find("tbody")
@@ -69,7 +66,6 @@ def parse_standings(html):
 
     right_table = _find_stats_table(soup)
     if not right_table:
-        print("couldn't find the stats table")
         return []
 
     right_tbody = right_table.find("tbody")
@@ -84,7 +80,7 @@ def parse_standings(html):
         name_tag = team_row.find("span", class_="hide-mobile")
         team_name = name_tag.text.strip() if name_tag else "unknown"
 
-        # stat order: GP W D L BYE F A TF TA TBP LBP BP PD P so i dont forget
+        # stat order: GP W D L BYE F A TF TA TBP LBP BP PD P
         stat_cells = stat_row.find_all("span", class_="stat-cell")
         if len(stat_cells) < 14:
             continue
@@ -101,14 +97,13 @@ def parse_standings(html):
             }
         )
 
-    print(f"parsed {len(standings)} teams")
     return standings
 
 
-def scrape_and_save(competition_id, url):
-    # sets up db, fetches + parses standing it also saves everything in 1 thing function ngl but it works and i dont care enough to refactor it
+def scrape_and_save(competition_id, url, competition_name, competition_type, season):
+    # fetches + parses standings, saves everything to database
     initialise_database()
-    insert_competition("Six Nations", "international", "2026")
+    insert_competition(competition_name, competition_type, season)
     html = fetch_espn_page(url)
     standings = parse_standings(html)
 
@@ -119,7 +114,7 @@ def scrape_and_save(competition_id, url):
     for row in standings:
         insert_team(row["team_name"], None, None, None)
 
-        # here it searches for team_id after inserting ik it is inneficient but it kinda works TvT
+        # look up team_id after inserting
         conn = create_connection()
         cursor = conn.cursor()
         cursor.execute(
@@ -129,7 +124,6 @@ def scrape_and_save(competition_id, url):
         conn.close()
 
         if not result:
-            print(f"couldn't find team_id for {row['team_name']}, skipping")
             continue
 
         insert_standing(
@@ -145,8 +139,3 @@ def scrape_and_save(competition_id, url):
         )
 
     log_scrape(len(standings), "success")
-    print(f"saved {len(standings)} standings to database")
-
-
-if __name__ == "__main__":
-    scrape_and_save(1, "https://www.espn.com/rugby/standings/_/league/180659")

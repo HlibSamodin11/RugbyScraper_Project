@@ -50,4 +50,15 @@ added a really cool logo animation
 also i added really cool choosing of competition thing
 i also added a coloured table while watching wales vs ireland game 
 this day i ahd loads of progress and i think it is really good 
+i coded today for like 7hrs thats like so much progress im so happy
+
+
+----------------------------------------
+
+[7 Mar 2025 11:08]
+Added the banner
+The csv Export 
+Also i made the descriptions to each competiton 
+Added description about me when u press e
+REAL TABLES NOW!!!
 
