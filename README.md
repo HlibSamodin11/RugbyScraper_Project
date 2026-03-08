@@ -1,10 +1,10 @@
 <div align="center">
   <!-- Left image -->
-  <img align="left" width="280" height="220" alt="image" src="https://github.com/user-attachments/assets/09d3cb8e-770a-4146-9e3b-497d69fd67f8" />
+<img align="left" width="280" height="220" alt="image" src="https://github.com/user-attachments/assets/09d3cb8e-770a-4146-9e3b-497d69fd67f8" />
 <!-- Center image -->
-  <img src="https://github.com/user-attachments/assets/4cf1bc0f-f4fb-4264-a8f1-59e4292b85bf" alt="Center" width="240" height="240">
+<img src="https://github.com/user-attachments/assets/4cf1bc0f-f4fb-4264-a8f1-59e4292b85bf" alt="Center" width="240" height="240">
 <!-- Right image -->
-  <img align="right" src="https://github.com/user-attachments/assets/74b37d89-f0ab-4da1-95fa-938ced99e41c" alt="Right" width="240" height="240">
+<img align="right" src="https://github.com/user-attachments/assets/74b37d89-f0ab-4da1-95fa-938ced99e41c" alt="Right" width="240" height="240">
 </div>
 
 <div align="center">
@@ -37,7 +37,7 @@ At 15, after finishing "Clean Code" by Robert C. Martin, I wanted to build somet
 - ✅ Export standings to CSV
 - ✅ SQLite database to store historical data
 - ✅ Animated logo, banners and exit sequence
-- 🔜 Auto-refresh
+- ✅ Last updated timestamp on standings
 
 ---
 
@@ -62,7 +62,6 @@ At 15, after finishing "Clean Code" by Robert C. Martin, I wanted to build somet
 - `beautifulsoup4` — parsing HTML
 - `rich` — terminal UI, tables, animations
 - `sqlite3` — storing standings history
-- `schedule` — auto-refresh (coming soon)
 
 ---
 
@@ -80,7 +79,7 @@ At 15, after finishing "Clean Code" by Robert C. Martin, I wanted to build somet
 ## Installation
 
 ```bash
-pip install requests beautifulsoup4 rich schedule
+pip install requests beautifulsoup4 rich
 ```
 
 ## How to Run
@@ -100,7 +99,7 @@ Then pick a competition from the menu:
 ---
 
 <div align="center">
-  <img width="230" height="230" alt="image" src="https://github.com/user-attachments/assets/03bf1d2e-a5e7-4781-9a46-9294fe24b421"/>
+<img width="230" height="230" alt="image" src="https://github.com/user-attachments/assets/03bf1d2e-a5e7-4781-9a46-9294fe24b421"/>
 
 Made with ❤️ by <a href="https://github.com/HlibSamodin11">HlibSamodin</a>
 
