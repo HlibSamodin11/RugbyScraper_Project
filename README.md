@@ -1,22 +1,19 @@
 <div align="center">
-
   <!-- Left image -->
   <img align="left" width="280" height="220" alt="image" src="https://github.com/user-attachments/assets/09d3cb8e-770a-4146-9e3b-497d69fd67f8" />
-
-  <!-- Center image -->
+<!-- Center image -->
   <img src="https://github.com/user-attachments/assets/4cf1bc0f-f4fb-4264-a8f1-59e4292b85bf" alt="Center" width="240" height="240">
-
-  <!-- Right image -->
+<!-- Right image -->
   <img align="right" src="https://github.com/user-attachments/assets/74b37d89-f0ab-4da1-95fa-938ced99e41c" alt="Right" width="240" height="240">
-
 </div>
+
 <div align="center">
 
 # RugbyScraper 🏉
 
-A terminal app for live rugby scores and stats, with a focus on clean, readable code. Built to look great in the terminal, easy to use, and fun for rugby fans!
+A terminal app for live rugby scores and standings, with a focus on clean, readable code. Built to look great in the terminal, easy to use, and fun for rugby fans!
 
-[![GitHub](https://img.shields.io/badge/GitHub-HlibSamodin-black?logo=github)](https://github.com/HlibSamodin)
+[![GitHub](https://img.shields.io/badge/GitHub-HlibSamodin11-black?logo=github)](https://github.com/HlibSamodin11)
 
 #### 📝 Btw there is a DevLog so check it out!!
 
@@ -24,45 +21,52 @@ A terminal app for live rugby scores and stats, with a focus on clean, readable 
 
 ---
 
-## Why I made this ???
+## Why I made this
 
-At 14, after i finished "Clean Code" book made by Robert C. Martin, I wanted to build something real to practice "better coding" in some way. Rugby is my favorite sport, so i made a project I actually care about.
-
----
-
-## Features which I want to include
-
-- Scraping live rugby data from ESPN
-- Showing standings, results, and stats for major competitions
-- Clean, colorful terminal UI
-- Fast updates and easy navigation
+At 15, after finishing "Clean Code" by Robert C. Martin, I wanted to build something real to practice better coding. Rugby is my favourite sport, so I made a project I actually care about.
 
 ---
 
-## Competitions which will be included
+## Features
 
-- 🏴󠁧󠁢󠁥󠁮󠁧󠁿 Six Nations
-- 🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premiership
-- 🇫🇷 Top 14
-- 🌍 United Rugby Championship (URC)
-- 🌍 Champions Cup
-- 🌍 Rugby Championship
-- 🌍 Rugby World Cup 2027 — coming soon
+- ✅ Scrapes live rugby standings from ESPN
+- ✅ Scrapes recent match results
+- ✅ Clean, colourful terminal UI with animations
+- ✅ Standings table with colour coded positions
+- ✅ Match results display (home vs away with scores)
+- ✅ Export standings to CSV
+- ✅ SQLite database to store historical data
+- ✅ Animated logo, banners and exit sequence
+- 🔜 Auto-refresh
 
 ---
 
-## Tech stack
+## Competitions
+
+|     | Competition               | Status         |
+| --- | ------------------------- | -------------- |
+| 🏴󠁧󠁢󠁥󠁮󠁧󠁿  | Six Nations               | ✅ Live        |
+| 🏴󠁧󠁢󠁥󠁮󠁧󠁿  | Gallagher Premiership     | ✅ Live        |
+| 🇫🇷  | Top 14                    | ✅ Live        |
+| 🌍  | United Rugby Championship | ✅ Live        |
+| 🌍  | Champions Cup             | ✅ Live        |
+| 🌍  | Rugby Championship        | ✅ Live        |
+| 🌍  | Rugby World Cup 2027      | 🔜 Coming Soon |
+
+---
+
+## Tech Stack
 
 - Python 3
-- requests
-- beautifulsoup4
-- rich
-- schedule
-- sqlite3
+- `requests` — fetching ESPN pages
+- `beautifulsoup4` — parsing HTML
+- `rich` — terminal UI, tables, animations
+- `sqlite3` — storing standings history
+- `schedule` — auto-refresh (coming soon)
 
 ---
 
-## Clean code which im going to use
+## Clean Code Principles
 
 - `snake_case` for functions and variables
 - `CamelCase` for classes
@@ -73,23 +77,31 @@ At 14, after i finished "Clean Code" book made by Robert C. Martin, I wanted to 
 
 ---
 
-## Installation of the project
+## Installation
 
 ```bash
 pip install requests beautifulsoup4 rich schedule
 ```
 
-## How to run the project
+## How to Run
 
 ```bash
 python main.py
 ```
+
+Then pick a competition from the menu:
+
+- Press `1-7` to select a competition
+- Press `r` after standings to see recent results
+- Press `e` after standings to export to CSV
+- Press `a` for about
+- Press `q` to quit
 
 ---
 
 <div align="center">
   <img width="230" height="230" alt="image" src="https://github.com/user-attachments/assets/03bf1d2e-a5e7-4781-9a46-9294fe24b421"/>
 
-Made with ❤️ by <a href="https://github.com/HlibSamodin">HlibSamodin</a>
+Made with ❤️ by <a href="https://github.com/HlibSamodin11">HlibSamodin</a>
 
 </div>

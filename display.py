@@ -39,7 +39,7 @@ ABOUT_TEXT = """
   actually care about. This project scrapes live rugby
   data from ESPN and displays it in a clean terminal UI.
 
-  github.com/HlibSamodin
+  github.com/HlibSamodin11
 """
 
 # each entry: (menu key, region tag, display name)
