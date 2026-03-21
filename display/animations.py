@@ -5,17 +5,19 @@ from rich.console import Console
 
 from display.constants import (
     ABOUT_LINE_DELAY,
+    ABOUT_TEXT,
     BANNER_LINE_DELAY,
     COMPETITION_BANNERS,
     COMPETITION_COLOURS,
+    GLITCH_CHAR_PROBABILITY,
     GLITCH_CHARS,
     GLITCH_FRAMES,
     GLITCH_LINE_LENGTH,
     GLITCH_LOGO_FRAMES,
+    GLITCH_SHOW_PROBABILITY,
     LOGO,
     LOGO_LINE_DELAY,
     TAGLINE,
-    ABOUT_TEXT,
 )
 from display.utils import clear_screen
 
@@ -45,7 +47,8 @@ def _generate_glitch_frame() -> str:
 
 def _glitch_logo_line(line: str) -> str:
     return "".join(
-        c if random.random() > 0.3 else random.choice(GLITCH_CHARS) for c in line
+        c if random.random() > GLITCH_CHAR_PROBABILITY else random.choice(GLITCH_CHARS)
+        for c in line
     )
 
 
@@ -76,7 +79,7 @@ def animate_exit() -> None:
 
     for _ in range(GLITCH_FRAMES):
         clear_screen()
-        colour = "green" if random.random() > 0.3 else "red"
+        colour = "green" if random.random() > GLITCH_CHAR_PROBABILITY else "red"
         console.print(_generate_glitch_frame(), style=f"bold {colour}")
         time.sleep(0.07)
 
@@ -84,7 +87,7 @@ def animate_exit() -> None:
     for _ in range(GLITCH_LOGO_FRAMES):
         clear_screen()
         for line in logo_lines:
-            if random.random() > 0.4:
+            if random.random() > GLITCH_SHOW_PROBABILITY:
                 console.print(_glitch_logo_line(line), style="bold green")
             else:
                 console.print(" " * len(line))

@@ -1,4 +1,5 @@
 import os
+import platform
 import time
 
 from rich.console import Console
@@ -16,7 +17,7 @@ console = Console()
 
 
 def clear_screen() -> None:
-    os.system("clear")
+    os.system("cls" if platform.system() == "Windows" else "clear")
 
 
 def get_terminal_width() -> int:
