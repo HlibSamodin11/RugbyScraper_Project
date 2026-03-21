@@ -136,7 +136,7 @@ Then pick a competition from the menu:
 ---
 
 <div align="center">
-<img width="230" height="230" alt="image" src="https://github.com/user-attachments/assets/03bf1d2e-a5e7-4781-9a46-9294fe24b421"/>
+<img width="230" height="230" alt="image" src="https://github.com/user-attachments/assets/6bfe34dd-e018-4029-a57e-4237ff70dee9"/>
 
 Made with ❤️ by <a href="https://github.com/HlibSamodin11">HlibSamodin</a>
 </div>

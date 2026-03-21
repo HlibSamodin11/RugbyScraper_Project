@@ -71,10 +71,41 @@ Added better read.me today
 added last updated stamp 
 
 ----------------------------------------
+[21 Mar 2026 13:07]
+OK SO THIS 2 WEEKS WAS MASSIVE like actually insane progress
+First had loads of setup issues - pip wasnt working on CachyOS cuz of the 
+externally managed environment thing had to use venv which was also a pain
+but got there in the end
 
-[21 Mar 2026 10:57]
-Soo today i made the table export look better exams are soon so loads of work has to be done
-addec cool statistics 
-specific team statistics + table 
+So v2.0 is fully done today here is what i built:
+
+SCRAPER IMPROVEMENTS
+- Added PF, PA, PD columns (points for, against, difference) to standings
+- Fixed the scraper to grab these from the right ESPN cell indices
+- Added proper error handling with 3 retries, specific messages for 403/404/429/500
+- Added ESPN connectivity check at startup
+- Auto-scrapes ALL competitions when you launch the app now
+- Match results now saved to the database properly
+- Fixed date scraping - was using wrong CSS class (ScoreboardScoreCell__Time 
+  vs ScoreCell__Time) took a quick HTML inspection to find it
+
+NEW FEATURES
+- Fixture list with dates and team form (f key)
+- Form data scraped directly from ESPN HTML (WWLWL format)
+- Better results screen - winner highlighted green, dates shown
+- Animated team stats screen with growing bar chart
+- Points comparison chart showing all teams at once
+- New result FLASH notifications on startup - flashes each new result 
+  one by one with animation, compares db before/after scrape
+- Points trend graph (unlocks after running daily for a few days)
+- Trophy for 1st place, down arrow for last
+- Auto resize for narrow terminals - hides PF/PA/PD columns if too small
+- Fixed description panel text wrapping
+
+Also updated the README with all v2.0 features and pushed everything to GitHub
+Tagged as v2.0 on main branch
+
+Coded for like 3hrs straight every single day of the week also made pivate repo because almost broke this one, loads of debugging but everything works
+The notification animation is probably my favourite thing ive built so far
+Exams soon so might slow down but v2 is done and im happy with it :)
 ----------------------------------------
-

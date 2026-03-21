@@ -3,7 +3,6 @@
 ---
 
 ## ✅ v1.0 — Shipped
-
 - Live standings scraping from ESPN
 - Match results display
 - Rich terminal UI with animations
@@ -14,50 +13,52 @@
 
 ---
 
-## 🔜 v2.0 — Match Data & Stats
-
-- 💾 Save match results to database (matches table already exists)
-- 📅 Fixture list — upcoming matches with dates
-- 📺 Better results screen with match dates
-- 🔔 Notification when a new result comes in
-- 🎨 Fix description panel text wrapping
+## ✅ v2.0 — Match Data & Stats — Shipped
+- 💾 Match results saved to database
+- 📅 Fixture list — upcoming matches with dates and team form
+- 📺 Better results screen — winner highlighted, dates shown
+- 🔔 Flash notifications when new results come in
+- 🎨 Fixed description panel text wrapping
+- 📊 PF, PA, PD columns — points for, against and difference
+- ● Form column — last 5 results as coloured dots
+- 🏆 Trophy for 1st place, ⬇ for last place
+- 📈 Animated team stats screen with points comparison bar chart
+- 📉 Points trend graph — unlocks with daily scraping
+- 🔄 Auto-scrapes all competitions at startup
+- ⚠️ Smart error handling — retries, rate limits, connection checks
+- 📐 Auto resize for narrow terminals
 
 ---
 
 ## 🔜 v3.0 — Deep Stats
-
 - 📊 More stats — bonus points, try scoring, head to head records
 - 🔴 Match timeline — scrums, lineouts, penalties, tries
 - 🏅 Player of the match
-- 📈 Form guide — last 5 results per team (W/W/L/W/D)
 - 🗺️ Show which country each team is from with a flag
+- 🔍 Search for a specific team across all competitions
+- 🎯 Predict match outcomes based on current form
 
 ---
 
 ## 🔜 v4.0 — Technical & Polish
-
 - ✅ Add tests
-- 🔄 Proper auto-refresh
+- 🔄 Proper auto-refresh — scrape in background every hour
 - 🎥 YouTube highlights link per match using `webbrowser.open()`
-- 🎯 Predict match outcomes based on current form
 - 📰 Latest rugby news headlines scraped from a news site
-- 🔍 Search for a specific team across all competitions
-
----
-
-## 🔜 v5.0 — Fun & Extras
-
-- 🎮 Rugby trivia mode — random rugby facts/questions
-- 🏉 Random "did you know" facts about each competition when you open it
-- 📊 Historical standings chart — track a team's position over the season
 - ⚙️ Config file — set your favourite competition to load first
 - 🌍 Support more competitions — Super Rugby, Top League Japan
 
 ---
 
-## 🌐 Stretch Goals
-
-- 🌐 Flask web version
-- 📱 Simple API
+## 🔜 v5.0 — Fun & Extras
+- 🎮 Rugby trivia mode — random rugby facts and questions
+- 🏉 Random "did you know" facts about each competition on open
+- 📊 Historical standings chart — track a team's position over the season
 - 🤝 Multiplayer rugby trivia
+
+---
+
+## 🌐 Stretch Goals
+- 🌐 Flask web version
+- 📱 Simple API so others can use the data
 - 📲 Mobile notifications for match results
