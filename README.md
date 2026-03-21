@@ -11,7 +11,7 @@ A terminal app for live rugby scores, standings and fixtures — with animated U
 
 [![GitHub](https://img.shields.io/badge/GitHub-HlibSamodin11-black?logo=github)](https://github.com/HlibSamodin11)
 ![Python](https://img.shields.io/badge/Python-3.x-blue?logo=python)
-![Version](https://img.shields.io/badge/version-2.0-green)
+![Version](https://img.shields.io/badge/version-2.1-green)
 
 #### 📝 Check out the DevLog!
 
@@ -51,6 +51,13 @@ At 15, after finishing *Clean Code* by Robert C. Martin, I wanted to build somet
 - ✅ Auto resize for narrow terminals
 - ✅ Trophy 🏆 for 1st place, ⬇ for last place
 
+### v2.1
+- ✅ Full refactor — clean code pass with type hints throughout
+- ✅ display.py split into 8 focused modules
+- ✅ All magic numbers replaced with named constants
+- ✅ Database connections use `with` statements consistently
+- ✅ Zero Ruff linter warnings
+
 ---
 
 ## Competitions
@@ -80,16 +87,25 @@ At 15, after finishing *Clean Code* by Robert C. Martin, I wanted to build somet
 ## Project Structure
 ```
 RugbyScraper/
-├── main.py          — entry point, handles user input
-├── scraper.py       — fetches and parses ESPN data
-├── display.py       — all terminal UI and animations
-├── database.py      — SQLite database operations
-├── competitions.py  — competition URLs and config
-├── exporter.py      — CSV export
-├── stats.py         — team history and form data
+├── main.py           — entry point, coordinates everything
+├── scraper.py        — fetches and parses ESPN data
+├── database.py       — SQLite database operations
+├── competitions.py   — competition URLs and config
+├── exporter.py       — CSV export
+├── stats.py          — team history and form data
+├── display/
+│   ├── __init__.py   — public exports
+│   ├── constants.py  — all constants and config
+│   ├── utils.py      — terminal helpers and spinner
+│   ├── animations.py — logo, exit, banner animations
+│   ├── menu.py       — competition menu
+│   ├── standings.py  — standings table
+│   ├── team_stats.py — team stats screen and graph
+│   ├── results.py    — results and fixtures tables
+│   └── notifications.py — new result flash notifications
 └── data/
-    ├── rugby.db     — SQLite database
-    └── exports/     — exported CSV files
+    ├── rugby.db      — SQLite database
+    └── exports/      — exported CSV files
 ```
 
 ---
@@ -101,8 +117,9 @@ RugbyScraper/
 - Small, focused functions with single responsibilities
 - DRY — no repeated code
 - Clear, meaningful names
-- Docstrings on every function
+- Type hints on every function
 - Graceful error handling throughout
+- Zero linter warnings
 
 ---
 

@@ -108,4 +108,9 @@ Tagged as v2.0 on main branch
 Coded for like 3hrs straight every single day of the week also made pivate repo because almost broke this one, loads of debugging but everything works
 The notification animation is probably my favourite thing ive built so far
 Exams soon so might slow down but v2 is done and im happy with it :)
+
+Big refactor today — split display.py into 8 proper modules
+Fixed magic numbers, type hints, with() for db connections
+Friend helped catch a redundant check in get_team_form
+Ruff linter now clean, tagged v2.1
 ----------------------------------------
